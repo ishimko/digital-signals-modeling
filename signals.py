@@ -23,11 +23,7 @@ def harmonic_signal(harmonic_params, N):
         yield harmonic(harmonic_params, N, i)
 
 
-def polyharmonic_signal(harmonics_params, N):
-    if harmonics_params is not Sequence:
-        raise ValueError('Amplitudes sequence is required')
-    if not len(harmonics_params):
-        raise ValueError('At least one harmonic is required')
+def polyharmonic_signal(harmonics_params, N):    
     validate_N(N)
 
     for i in range(N):
