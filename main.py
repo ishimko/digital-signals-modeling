@@ -3,14 +3,15 @@ from math import pi
 import matplotlib.pyplot as plt
 
 import drawer
-from signals import HarmonicParameters, harmonic_signal, polyharmonic_signal
+from signals import HarmonicParameters, harmonic_signal, polyharmonic_signal, polyharmonic_linear
 
 
 def main():
     results = []
-    for i, viewer in enumerate([show_phases, show_frequencies, show_amplitudes, show_polyharmonic]):
+    for i, viewer in enumerate([show_phases, show_frequencies, show_amplitudes, show_polyharmonic_linear]):
         plt.subplot(2, 2, i + 1)
         results.append(viewer())
+    results.append(show_polyharmonic())
     plt.show()
 
 
@@ -41,6 +42,11 @@ def show_polyharmonic():
         (1, pi, 5)
     ]))
     return drawer.draw_polyharmonic(polyharmonic_signal, params)
+
+
+def show_polyharmonic_linear():
+    params = HarmonicParameters(10, 0, 10)
+    plt.plot(list(polyharmonic_linear(params, 512)))
 
 
 if __name__ == '__main__':

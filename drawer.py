@@ -23,6 +23,7 @@ def draw_polyharmonic(signal, params):
         for slider in sliders:
             slider.reset()
 
+    fig = plt.figure()
     plt.subplots_adjust(bottom=0.3)
 
     plot, = plt.plot(list(signal(params, N)))

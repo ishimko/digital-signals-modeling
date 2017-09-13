@@ -30,5 +30,19 @@ def polyharmonic_signal(harmonics_params, N):
         single_harmonic = lambda params: harmonic(params, N, i)
         yield sum((single_harmonic(params) for params in harmonics_params))
 
+
+def polyharmonic_linear(harmonic_params, N):
+    amplitude_function = lambda x, i: x * (i%N) * 0.001
+    phase_function = lambda x, i: x * (i%N) * 0.001
+    frequency_function = lambda x, i: x * (i%N) * 0.001
+    current_params = harmonic_params
+    for i in plotting_range(N*2):
+        yield harmonic(current_params, N, i%N)
+        phase = phase_function(harmonic_params.phase, i)
+        amplitude = amplitude_function(harmonic_params.amplitude, i)
+        frequency = frequency_function(harmonic_params.frequency, i)
+        current_params = HarmonicParameters(amplitude, phase, frequency)
+
+
 def plotting_range(N):
-    return range(N//2)
+    return range(N)
