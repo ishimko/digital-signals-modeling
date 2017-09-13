@@ -1,5 +1,5 @@
-from math import sin, pi
-from collections import namedtuple, Sequence
+from collections import namedtuple
+from math import pi, sin
 
 HarmonicParameters = namedtuple('HarmonicParameters', ['amplitude', 'phase', 'frequency'])
 
@@ -19,13 +19,16 @@ def harmonic(harmonic_params, N, i):
 
 def harmonic_signal(harmonic_params, N):
     validate_N(N)
-    for i in range(N):
+    for i in plotting_range(N):
         yield harmonic(harmonic_params, N, i)
 
 
-def polyharmonic_signal(harmonics_params, N):    
+def polyharmonic_signal(harmonics_params, N):
     validate_N(N)
 
-    for i in range(N):
+    for i in plotting_range(N):
         single_harmonic = lambda params: harmonic(params, N, i)
         yield sum((single_harmonic(params) for params in harmonics_params))
+
+def plotting_range(N):
+    return range(N//2)

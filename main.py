@@ -6,11 +6,11 @@ import drawer
 from signals import HarmonicParameters, harmonic_signal, polyharmonic_signal
 
 
-def main():    
+def main():
     results = []
     for i, viewer in enumerate([show_phases, show_frequencies, show_amplitudes, show_polyharmonic]):
         plt.subplot(2, 2, i + 1)
-        results.append(viewer())    
+        results.append(viewer())
     plt.show()
 
 
