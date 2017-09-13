@@ -32,7 +32,7 @@ def draw_polyharmonic(signal, params):
     sliders = []
     for i, param in enumerate(params):
         axes = plt.axes([0.17, 0.1+i*0.03, 0.65, 0.01])
-        slider = Slider(axes, '$f={}$'.format(param.frequency), 0, pi*2, valinit=param.phase)
+        slider = Slider(axes, '$f={}$'.format(param.frequency), 0, pi*2, valinit=param.phase, valfmt='$\phi=%1.2f$')
         slider.on_changed(update)
         sliders.append(slider)
 
