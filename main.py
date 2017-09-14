@@ -46,7 +46,7 @@ def show_polyharmonic():
 
 def show_polyharmonic_linear():
     params = HarmonicParameters(10, 0, 10)
-    plt.plot(list(polyharmonic_linear(params, 512)))
+    drawer.draw_plot(polyharmonic_linear, params)
 
 
 if __name__ == '__main__':

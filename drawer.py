@@ -13,6 +13,10 @@ def draw_plots(title, signal, params_builder, variable_parameter):
     plt.legend(loc='center left')
 
 
+def draw_plot(signal, params):
+    plt.plot(list(signal(params, N)))
+
+
 def draw_polyharmonic(signal, params):
     def update(_):
         phases = list(map(lambda x: x.val, sliders))
